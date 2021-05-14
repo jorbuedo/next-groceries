@@ -4,7 +4,7 @@ const GIST_TOKEN = process.env.GIST_TOKEN
 const GIST_ID = process.env.GIST_ID
 const GIST_FILENAME = process.env.GIST_FILENAME ?? 'db.json'
 
-/* 
+/*
  * Reads the JSON file inside of the gist
  */
 const getData = async () => {
@@ -13,7 +13,7 @@ const getData = async () => {
   return JSON.parse(gist.files[GIST_FILENAME].content)
 }
 
-/* 
+/*
  * Puts the data you want to store back into the gist
  */
 const setData = async (data: Object) => {
