@@ -1,5 +1,8 @@
 import { AppProps } from 'next/app'
-import 'twind/shim'
+
+if (process.env.NODE_ENV === 'development') {
+  import('twind/shim')
+}
 
 function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />

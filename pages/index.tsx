@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Favicon from 'components/Favicon'
+import { tw } from 'twind'
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <p className="text-red-500">Hello World!</p>
+        <p className={tw`text-red-500`}>Hello World!</p>
       </main>
     </>
   )
