@@ -1,21 +1,19 @@
 import Head from 'next/head'
-import Favicon from 'components/Favicon'
 import { tw } from 'twind'
+import Favicon from 'components/Favicon'
+import { api } from 'utils/constants'
 
-export default function Home() {
+export default function GroceryList() {
   return (
     <>
       <Head>
         <title>Grocery list</title>
-        <meta
-          name="description"
-          content="The way to shop. Everything you need in one grocery list."
-        />
         <Favicon />
       </Head>
 
       <main>
         <p className={tw`text-red-500`}>Hello World!</p>
+        <pre>{api}</pre>
       </main>
     </>
   )
