@@ -1,7 +1,7 @@
 import { useFetch } from 'lib/Fetch'
 import { makeVar, useReactiveVar } from 'lib/ReactiveVar'
 import { useEffect } from 'react'
-import { errorsVar } from './Error'
+import { pushError } from './Error'
 
 export type Grocery = {
   id: string
@@ -24,7 +24,7 @@ export const useGroceryList = () => {
   useEffect(() => {
     groceryListVar(data)
     if (error) {
-      errorsVar((errors) => [error, ...errors])
+      pushError(error)
     }
   }, [data, error])
 
