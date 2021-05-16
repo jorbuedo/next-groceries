@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Favicon from 'components/Favicon'
 import Toaster from 'components/Toaster'
 import { tw } from 'twind'
+import 'twind.config'
 
 if (process.env.NODE_ENV === 'development') {
   import('twind/shim')
