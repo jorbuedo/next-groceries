@@ -36,7 +36,7 @@
     },
     "import/resolver": {
       "typescript": {
-        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        "alwaysTryTypes": true
       }
     }
   },
@@ -50,6 +50,7 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
     "eqeqeq": ["error", "always"],
     "import/extensions": 0,
     "import/imports-first": 0,
@@ -78,6 +79,8 @@
     "react/jsx-no-target-blank": 0,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-uses-vars": 2,
+    "react/no-unescaped-entities": 0,
+    "react/react-in-jsx-scope": 0,
     "react/require-default-props": 0,
     "react/self-closing-comp": 0,
     "react/sort-comp": 0

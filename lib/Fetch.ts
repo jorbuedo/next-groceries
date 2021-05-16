@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { parseUriTemplate, parseUriTemplateWithQuery } from 'utils'
+import { parseUriTemplateWithQuery } from 'utils'
+import { api } from 'utils/constants'
 
 type useFetchOptions = {
   lazy?: boolean
@@ -15,12 +16,17 @@ type useFetchType<T> = {
   refetch: (options: refetchOptions) => void
   loading: boolean
   data?: T
-  error?: { message: string } | Error
+  error?: Error
 }
 
 export const useFetch = <T extends unknown>(
   endpoint: string,
-  { lazy, params: hookParams, query: hookQuery, ...options }: useFetchOptions,
+  {
+    lazy,
+    params: hookParams,
+    query: hookQuery,
+    ...options
+  }: useFetchOptions = {},
 ): useFetchType<T> => {
   const [data, setData] = useState<T>()
   const [error, setError] = useState()
@@ -41,7 +47,7 @@ export const useFetch = <T extends unknown>(
 
     const uri = parseUriTemplateWithQuery(endpoint, { params, query })
 
-    fetch(uri, { signal, ...options, ...newOptions })
+    fetch(`${api}${uri}`, { signal, ...options, ...newOptions })
       .then((res) => res.json())
       .then((dat) => setData(dat))
       .catch((err) => setError(err))

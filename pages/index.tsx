@@ -1,19 +1,21 @@
 import Head from 'next/head'
-import { tw } from 'twind'
-import Favicon from 'components/Favicon'
-import { api } from 'utils/constants'
+import { useGroceryList } from 'models/Grocery'
+import GroceryList from 'components/GroceryList'
 
-export default function GroceryList() {
+export default function GroceryListPage() {
+  const { loading, groceryList } = useGroceryList()
   return (
     <>
       <Head>
         <title>Grocery list</title>
-        <Favicon />
       </Head>
 
       <main>
-        <p className={tw`text-red-500`}>Hello World!</p>
-        <pre>{api}</pre>
+        {loading ? (
+          <GroceryList.SkeletonList />
+        ) : (
+          <GroceryList.List groceryList={groceryList} />
+        )}
       </main>
     </>
   )

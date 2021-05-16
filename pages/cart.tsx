@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { tw } from 'twind'
 
-export default function Cart() {
+export default function CartPage() {
   return (
     <>
       <Head>
