@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { tw, apply } from 'twind'
 import { css } from 'twind/css'
 
-const btn = apply`text-2xl font-thin hover:bg-gray-100 h-full w-20 outline-none focus:outline-none focus-visible:ring-2`
+const btn = apply`text-2xl font-thin hover:bg-blue-100 h-full w-20 outline-none focus:outline-none focus-visible:ring-2`
 const noArrows = css({
   '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
     '-webkit-appearance': 'none',

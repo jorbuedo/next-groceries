@@ -24,7 +24,7 @@ export default function GroceryListPage() {
         </div>
 
         <div className={tw`bg-white hidden md:block w-full max-w-sm relative`}>
-          <div className={tw`fixed max-h-screen w-full max-w-sm p-4`}>
+          <div className={tw`fixed max-h-screen w-full h-full max-w-sm p-4`}>
             <Cart.Template />
           </div>
         </div>

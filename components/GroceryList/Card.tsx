@@ -2,6 +2,7 @@ import { tw } from 'twind'
 import { lineClamp } from '@twind/line-clamp'
 import { Grocery } from 'models/Grocery'
 import Favorite from 'components/Favorite'
+import { buttonGradient } from 'utils'
 
 type GroceryListCardProps = {
   grocery: Grocery
@@ -37,7 +38,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
           <p className={tw`mt-auto`}>{`${grocery.stock} left`}</p>
           <button
             type="button"
-            className={tw`px-3 py-1 bg-yellow-600 hover:bg-yellow-500 rounded text-gray-50 shadow font-semibold focus-visible:ring-4`}
+            className={tw`${buttonGradient} px-3 py-1 rounded text-gray-50 shadow font-semibold focus-visible:ring-4`}
           >
             + Add
           </button>

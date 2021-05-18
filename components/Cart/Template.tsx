@@ -1,5 +1,6 @@
 import { CartItem } from 'models/Cart'
 import { tw } from 'twind'
+import { buttonGradient } from 'utils'
 import CartList from './List'
 
 export default function CartTemplate() {
@@ -14,8 +15,25 @@ export default function CartTemplate() {
     },
   ] as CartItem[]
   return (
-    <div className={tw`grid grid-flow-row gap-4`}>
+    <form className={tw`relative h-full`}>
       <CartList cartItemList={cartItemList} />
-    </div>
+      <div className={tw`h-32`} />
+      <div
+        className={tw`absolute bottom-0 flex flex-col justify-between h-32 w-full`}
+      >
+        <hr className={tw`border border-gray-100 my-2`} />
+        <div className={tw`flex justify-between items-baseline`}>
+          <p className={tw`font-medium px-2 mx-auto`}>Total Amount</p>
+          <p className={tw`text-lg text-yellow-600`}>233€</p>
+        </div>
+        <hr className={tw`border border-gray-100 my-2`} />
+        <button
+          type="submit"
+          className={tw`${buttonGradient} font-bold text-white truncate outline-none focus-visible:ring-2 rounded shadow py-2 px-4 w-full`}
+        >
+          Make a payment
+        </button>
+      </div>
+    </form>
   )
 }
