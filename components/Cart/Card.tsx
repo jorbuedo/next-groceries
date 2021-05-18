@@ -1,3 +1,4 @@
+import InputNumber from 'components/InputNumber'
 import { CartItem } from 'models/Cart'
 import { tw } from 'twind'
 
@@ -19,7 +20,7 @@ export default function CartCard({ cartItem }: CartCardProps) {
         <p
           className={tw`font-semibold text-blue-500 self-end`}
         >{`${cartItem.price} €`}</p>
-        <input type="number" min={0} max={cartItem.stock} defaultValue={1} />
+        <InputNumber min={0} max={cartItem.stock} defaultValue={1} />
       </div>
     </div>
   )

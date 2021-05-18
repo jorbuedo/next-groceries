@@ -19,13 +19,13 @@ export default function GroceryListPage() {
           {loading ? (
             <GroceryList.SkeletonList />
           ) : (
-            <GroceryList.List groceryList={groceryList} />
+            <GroceryList.List groceryList={groceryList.slice(0, 1)} />
           )}
         </div>
 
         <div className={tw`bg-white hidden md:block w-full max-w-sm relative`}>
           <div className={tw`fixed max-h-screen w-full max-w-sm p-4`}>
-            <Cart.List cartItemList={groceryList.slice(0, 3)} />
+            <Cart.List cartItemList={groceryList.slice(0, 1)} />
           </div>
         </div>
       </main>
