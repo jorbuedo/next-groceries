@@ -9,7 +9,7 @@ type GroceryListCardProps = {
 export default function GroceryListCard({ grocery }: GroceryListCardProps) {
   return (
     <div
-      className={tw`border flex flex-col relative rounded shadow overflow-hidden`}
+      className={tw`bg-white flex flex-col relative rounded shadow overflow-hidden`}
     >
       <div className={tw`absolute top-1 right-1 w-12 z-10`}>
         <Favorite isFavorite={grocery.favorite} id={grocery.id} />
@@ -19,6 +19,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
           alt={grocery.productName}
           className={tw`absolute top-0 left-0 h-full w-full object-cover`}
           src={grocery.image_url}
+          loading="lazy"
         />
       </div>
       <div className={tw`flex flex-col flex-1 p-4 pb-2`}>
