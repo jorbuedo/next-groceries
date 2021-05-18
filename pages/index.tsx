@@ -12,7 +12,7 @@ export default function GroceryListPage() {
         <title>Grocery list</title>
       </Head>
 
-      <main className={tw`bg-indigo-50 flex`}>
+      <main className={tw`bg-indigo-50 flex min-h-screen`}>
         <div
           className={tw`ml-auto mr-auto p-2 md:p-4 w-full md:w-4/5 max-w-7xl`}
         >
@@ -23,8 +23,8 @@ export default function GroceryListPage() {
           )}
         </div>
 
-        <div className={tw`bg-white hidden md:block w-1/5 max-w-xl relative`}>
-          <div className={tw`fixed max-h-screen w-inherit p-4`}>
+        <div className={tw`bg-white hidden md:block w-full max-w-sm relative`}>
+          <div className={tw`fixed max-h-screen w-full max-w-sm p-4`}>
             <Cart.List cartItemList={groceryList.slice(0, 3)} />
           </div>
         </div>
