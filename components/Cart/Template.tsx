@@ -15,11 +15,12 @@ export default function CartTemplate() {
     },
   ] as CartItem[]
   return (
-    <form className={tw`relative h-full`}>
-      <CartList cartItemList={cartItemList} />
-      <div className={tw`h-32`} />
+    <form className={tw`relative h-full flex flex-col`}>
+      <div className={tw`overflow-auto overscroll-contain mb-32 pb-4`}>
+        <CartList cartItemList={cartItemList} />
+      </div>
       <div
-        className={tw`absolute bottom-0 flex flex-col justify-between h-32 w-full`}
+        className={tw`absolute bottom-0 bg-white flex flex-col justify-between h-32 w-full`}
       >
         <hr className={tw`border border-gray-100 my-2`} />
         <div className={tw`flex justify-between items-baseline`}>
