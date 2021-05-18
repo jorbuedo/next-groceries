@@ -1,3 +1,4 @@
+import Cart from 'components/Cart'
 import Head from 'next/head'
 import { tw } from 'twind'
 
@@ -8,8 +9,8 @@ export default function CartPage() {
         <title>Cart</title>
       </Head>
 
-      <main>
-        <p className={tw`text-red-500`}>Hello cart!</p>
+      <main className={tw`p-4 max-w-md`}>
+        <Cart.Template />
       </main>
     </>
   )

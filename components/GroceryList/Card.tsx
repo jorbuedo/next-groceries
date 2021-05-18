@@ -1,6 +1,7 @@
-import Favorite from 'components/Favorite'
-import { Grocery } from 'models/Grocery'
 import { tw } from 'twind'
+import { lineClamp } from '@twind/line-clamp'
+import { Grocery } from 'models/Grocery'
+import Favorite from 'components/Favorite'
 
 type GroceryListCardProps = {
   grocery: Grocery
@@ -29,7 +30,9 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
             className={tw`font-semibold whitespace-nowrap ml-4 text-blue-500`}
           >{`${grocery.price} €`}</p>
         </div>
-        <p className={tw`text-sm line-clamp-3`}>{grocery.productDescription}</p>
+        <p className={tw`text-sm ${lineClamp(3)}`}>
+          {grocery.productDescription}
+        </p>
         <div className={tw`flex justify-between mt-auto pt-1 text-sm`}>
           <p className={tw`mt-auto`}>{`${grocery.stock} left`}</p>
           <button
