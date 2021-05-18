@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import { useEffect, useState } from 'react'
 import { tw, apply } from 'twind'
 import { css } from 'twind/css'
 
@@ -11,79 +11,69 @@ const noArrows = css({
   '-moz-appearance': 'textfield',
 })
 
-export default function InputNumber(
-  props: InputHTMLAttributes<HTMLInputElement>,
-) {
+type InputNumberProps = {
+  min?: number
+  max?: number
+  step?: number
+  defaultValue?: number
+  value?: number
+  onChange?: (n: number) => void
+}
+
+export default function InputNumber({
+  min,
+  max,
+  step = 1,
+  defaultValue = 0,
+  value,
+  onChange,
+}: InputNumberProps) {
+  const [innerValue, setInnerValue] = useState<number>(defaultValue)
+  useEffect(() => {
+    if (onChange) {
+      onChange(innerValue)
+    }
+  }, [innerValue])
+
+  const handleClick = (increment: number) => {
+    setInnerValue((current) => {
+      let next = current + increment
+      if (max !== undefined && next > max) {
+        next = max
+      }
+      if (min !== undefined && next < min) {
+        next = min
+      }
+      return next
+    })
+  }
+
   return (
-    <div className="flex flex-row border h-10 w-32 rounded">
-      <button type="button" aria-label="decrement" className={tw`${btn}`}>
+    <div className="flex flex-row border h-8 w-24 rounded">
+      <button
+        type="button"
+        aria-label="decrement"
+        className={tw`${btn}`}
+        onClick={() => handleClick(step * -1)}
+      >
         <span>−</span>
       </button>
       <input
+        {...(min !== undefined && { min })}
+        {...(max !== undefined && { max })}
+        value={value !== undefined ? value : innerValue}
+        disabled
         type="number"
-        className={tw`${noArrows} font-semibold text-center w-full outline-none focus-visible:ring-2`}
-        {...props}
+        className={tw`${noArrows} bg-transparent font-semibold text-center w-full outline-none focus-visible:ring-2`}
       />
-      <button type="button" aria-label="increment" className={tw`${btn}`}>
+      <button
+        type="button"
+        aria-label="increment"
+        className={tw`${btn}`}
+        onClick={() => handleClick(step)}
+      >
         <span>+</span>
       </button>
     </div>
   )
 }
-
-/*
-<style>
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  .custom-number-input input:focus {
-    outline: none !important;
-  }
-
-  .custom-number-input button:focus {
-    outline: none !important;
-  }
-</style>
-
-<script>
-  function decrement(e) {
-    const btn = e.target.parentNode.parentElement.querySelector(
-      'button[data-action="decrement"]'
-    );
-    const target = btn.nextElementSibling;
-    let value = Number(target.value);
-    value--;
-    target.value = value;
-  }
-
-  function increment(e) {
-    const btn = e.target.parentNode.parentElement.querySelector(
-      'button[data-action="decrement"]'
-    );
-    const target = btn.nextElementSibling;
-    let value = Number(target.value);
-    value++;
-    target.value = value;
-  }
-
-  const decrementButtons = document.querySelectorAll(
-    `button[data-action="decrement"]`
-  );
-
-  const incrementButtons = document.querySelectorAll(
-    `button[data-action="increment"]`
-  );
-
-  decrementButtons.forEach(btn => {
-    btn.addEventListener("click", decrement);
-  });
-
-  incrementButtons.forEach(btn => {
-    btn.addEventListener("click", increment);
-  });
-</script>
-
-*/
