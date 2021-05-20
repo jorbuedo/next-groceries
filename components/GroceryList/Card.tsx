@@ -20,7 +20,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
         <img
           alt={grocery.productName}
           className={tw`absolute top-0 left-0 h-full w-full object-cover`}
-          src={grocery.image_url}
+          src={grocery.imageUrl}
           loading="lazy"
         />
       </div>

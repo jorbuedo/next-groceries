@@ -12,7 +12,7 @@ export default function CartCard({ cartItem }: CartCardProps) {
       <img
         alt={cartItem.productName}
         className={tw`h-24 w-24 object-cover rounded`}
-        src={cartItem.image_url}
+        src={cartItem.imageUrl}
         loading="lazy"
       />
       <div className={tw`flex flex-col flex-1 ml-4 justify-between`}>
