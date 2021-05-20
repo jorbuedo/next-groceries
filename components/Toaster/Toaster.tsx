@@ -1,9 +1,7 @@
-import { useReactiveVar } from 'lib/ReactiveVar'
-import { errorsVar } from 'models/Error'
 import { tw } from 'twind'
 
 export default function Toaster() {
-  const errors = useReactiveVar(errorsVar)
+  const errors = [] as Error[]
 
   if (!errors.length) {
     return null

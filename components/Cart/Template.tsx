@@ -1,6 +1,6 @@
 import { CartItem } from 'models/Cart'
 import { tw } from 'twind'
-import { buttonGradient } from 'utils'
+import { buttonGradient } from 'styles'
 import CartList from './List'
 
 export default function CartTemplate() {
@@ -15,7 +15,7 @@ export default function CartTemplate() {
     },
   ] as CartItem[]
   return (
-    <form className={tw`relative h-full flex flex-col`}>
+    <form className={tw`flex flex-col h-full relative`}>
       <div className={tw`overflow-auto overscroll-contain mb-32 pb-4`}>
         <CartList cartItemList={cartItemList} />
       </div>

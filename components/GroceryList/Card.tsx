@@ -2,7 +2,7 @@ import { tw } from 'twind'
 import { lineClamp } from '@twind/line-clamp'
 import { Grocery } from 'models/Grocery'
 import Favorite from 'components/Favorite'
-import { buttonGradient } from 'utils'
+import { buttonGradient } from 'styles'
 
 type GroceryListCardProps = {
   grocery: Grocery
