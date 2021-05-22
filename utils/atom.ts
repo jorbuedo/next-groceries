@@ -5,6 +5,9 @@ export const atomWithLocalStorage = <T extends unknown>(
   initialValue: Record<string, T>,
 ) => {
   const getInitialValue = () => {
+    if (typeof localStorage === 'undefined') {
+      return {}
+    }
     try {
       const item = localStorage.getItem(key)
       if (item !== null) {

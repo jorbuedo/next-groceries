@@ -6,12 +6,14 @@ import Favicon from 'components/Favicon'
 import Head from 'next/head'
 import Header from 'components/Header'
 import Toaster from 'components/Toaster'
+import { useScroll } from 'utils/scroll'
 
 if (process.env.NODE_ENV === 'development') {
   import('twind/shim')
 }
 
 function App({ Component, pageProps }: AppProps) {
+  useScroll()
   const queryClient = new QueryClient()
   return (
     <>

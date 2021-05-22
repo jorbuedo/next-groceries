@@ -1,20 +1,28 @@
 import { getGroceries } from 'models/Grocery'
+import { h1Atom } from 'components/Header/Header'
 import { mainHeight } from 'styles'
 import { tw } from 'twind'
+import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import Cart from 'components/Cart'
 import GroceryList from 'components/GroceryList'
 import Head from 'next/head'
+import Panel from 'components/Panel'
 
 export default function GroceryListPage() {
   const { isLoading } = useQuery('groceryList', getGroceries, {
     staleTime: 30000,
   })
+  const [, setH1] = useAtom(h1Atom)
+  useEffect(() => {
+    setH1('Grocery List')
+  }, [])
 
   return (
     <>
       <Head>
-        <title>Grocery list</title>
+        <title>Grocery list | Rainbow Market</title>
       </Head>
 
       <main className={tw`bg-gray-50 flex ${mainHeight}`}>
@@ -24,11 +32,9 @@ export default function GroceryListPage() {
           {isLoading ? <GroceryList.SkeletonList /> : <GroceryList.List />}
         </div>
 
-        <div className={tw`bg-white hidden md:block w-full max-w-sm relative`}>
-          <div className={tw`${mainHeight} fixed w-full max-w-sm p-4`}>
-            <Cart.Template />
-          </div>
-        </div>
+        <Panel>
+          <Cart.Template />
+        </Panel>
       </main>
     </>
   )

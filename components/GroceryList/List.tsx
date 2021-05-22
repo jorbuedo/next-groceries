@@ -26,5 +26,5 @@ export default function GroceryListList() {
     return null
   }
 
-  return <List groceryList={groceryList} />
+  return <List groceryList={groceryList.slice(0, 30)} />
 }

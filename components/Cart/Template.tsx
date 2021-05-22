@@ -1,22 +1,19 @@
-import { CartItem } from 'models/Cart'
-import { tw } from 'twind'
+import { groceryToCartItem } from 'models/Cart'
 import { buttonGradient } from 'styles'
+import { getGroceries, Grocery } from 'models/Grocery'
+import { tw } from 'twind'
+import { useQuery } from 'react-query'
 import CartList from './List'
 
 export default function CartTemplate() {
-  const cartItemList = [
-    {
-      id: '20cc33f1-223b-4cf0-878d-fdedb3f60b56',
-      imageUrl:
-        'https://dummyimage.com/400x400/2ee9f7/000&text=Handcrafted Metal Towels',
-      stock: 41,
-      productName: 'Handcrafted Metal Towels',
-      price: 98,
-    },
-  ] as CartItem[]
+  const { data } = useQuery<Grocery[]>('groceryList', getGroceries)
+  const cartItemList = data?.slice(0, 10).map((x) => groceryToCartItem(x)) || []
+
   return (
     <form className={tw`flex flex-col h-full relative`}>
-      <div className={tw`overflow-auto overscroll-contain mb-32 pb-4`}>
+      <div
+        className={tw`overflow-auto overscroll-contain mb-32 pb-4 pr-4 -mr-4`}
+      >
         <CartList cartItemList={cartItemList} />
       </div>
       <div

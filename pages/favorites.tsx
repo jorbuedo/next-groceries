@@ -1,7 +1,10 @@
 import { getFavoriteGroceries, Grocery } from 'models/Grocery'
+import { h1Atom } from 'components/Header/Header'
 import { List as FavoriteList } from 'components/GroceryList/List'
 import { mainHeight } from 'styles'
 import { tw } from 'twind'
+import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 import { useQuery, useQueryClient } from 'react-query'
 import Cart from 'components/Cart'
 import GroceryList from 'components/GroceryList'
@@ -19,11 +22,15 @@ export default function FavoritesPage() {
           ?.filter((grocery) => grocery.favorite),
     },
   )
+  const [, setH1] = useAtom(h1Atom)
+  useEffect(() => {
+    setH1('Favorites')
+  }, [])
 
   return (
     <>
       <Head>
-        <title>Favorites</title>
+        <title>Favorites | Rainbow Market</title>
       </Head>
 
       <main className={tw`bg-gray-50 flex ${mainHeight}`}>
