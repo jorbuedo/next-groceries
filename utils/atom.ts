@@ -2,11 +2,11 @@ import { atom } from 'jotai'
 
 export const atomWithLocalStorage = <T extends unknown>(
   key: string,
-  initialValue: Record<string, T>,
+  initialValue: T,
 ) => {
   const getInitialValue = () => {
     if (typeof localStorage === 'undefined') {
-      return {}
+      return initialValue
     }
     try {
       const item = localStorage.getItem(key)
@@ -18,15 +18,15 @@ export const atomWithLocalStorage = <T extends unknown>(
       // eslint-disable-next-line no-console
       console.error(err)
       localStorage.removeItem(key)
-      return {}
+      return initialValue
     }
   }
   const baseAtom = atom(getInitialValue())
-  const derivedAtom = atom(
+  const derivedAtom = atom<T, T | ((a: T) => T)>(
     (get) => get(baseAtom),
     (get, set, update) => {
       const nextValue =
-        typeof update === 'function' ? update(get(baseAtom)) : update
+        update instanceof Function ? update(get(baseAtom)) : update
       set(baseAtom, nextValue)
       try {
         localStorage.setItem(key, JSON.stringify(nextValue))

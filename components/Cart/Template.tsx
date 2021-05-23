@@ -1,13 +1,12 @@
-import { groceryToCartItem } from 'models/Cart'
 import { buttonGradient } from 'styles'
-import { getGroceries, Grocery } from 'models/Grocery'
+import { cartAtom, cartTotalAtom } from 'models/Cart'
 import { tw } from 'twind'
-import { useQuery } from 'react-query'
+import { useAtom } from 'jotai'
 import CartList from './List'
 
 export default function CartTemplate() {
-  const { data } = useQuery<Grocery[]>('groceryList', getGroceries)
-  const cartItemList = data?.slice(0, 10).map((x) => groceryToCartItem(x)) || []
+  const [cartItemList] = useAtom(cartAtom)
+  const [cartTotal] = useAtom(cartTotalAtom)
 
   return (
     <form className={tw`flex flex-col h-full relative`}>
@@ -22,7 +21,9 @@ export default function CartTemplate() {
         <hr className={tw`border border-gray-100 my-2`} />
         <div className={tw`flex justify-between items-baseline`}>
           <p className={tw`font-medium px-2 mx-auto`}>Total Amount</p>
-          <p className={tw`text-lg text-yellow-600`}>233€</p>
+          <p
+            className={tw`text-lg text-yellow-600 whitespace-nowrap`}
+          >{`${cartTotal} €`}</p>
         </div>
         <hr className={tw`border border-gray-100 my-2`} />
         <button

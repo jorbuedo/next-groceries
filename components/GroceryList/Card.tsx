@@ -1,14 +1,23 @@
-import { tw } from 'twind'
-import { lineClamp } from '@twind/line-clamp'
-import { Grocery } from 'models/Grocery'
-import Favorite from 'components/Favorite'
 import { buttonGradient } from 'styles'
+import { cartAtom, groceryToCartItem } from 'models/Cart'
+import { Grocery } from 'models/Grocery'
+import { lineClamp } from '@twind/line-clamp'
+import { tw } from 'twind'
+import { useAtom } from 'jotai'
+import Favorite from 'components/Favorite'
 
 type GroceryListCardProps = {
   grocery: Grocery
 }
 
 export default function GroceryListCard({ grocery }: GroceryListCardProps) {
+  const [cartItems, setCartItems] = useAtom(cartAtom)
+  const handleAddToCart = () => {
+    if (!cartItems.find(({ id }) => id === grocery.id)) {
+      setCartItems([groceryToCartItem(grocery), ...cartItems])
+    }
+  }
+
   return (
     <div
       className={tw`bg-white flex flex-col relative rounded shadow overflow-hidden`}
@@ -39,6 +48,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
           <button
             type="button"
             className={tw`${buttonGradient} px-3 py-1 rounded text-gray-50 shadow font-semibold focus-visible:ring-4`}
+            onClick={handleAddToCart}
           >
             + Add
           </button>

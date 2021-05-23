@@ -28,7 +28,9 @@ export default function InputNumber({
   value,
   onChange,
 }: InputNumberProps) {
-  const [innerValue, setInnerValue] = useState<number>(defaultValue)
+  const [innerValue, setInnerValue] = useState<number>(
+    value !== undefined ? value : defaultValue,
+  )
   useEffect(() => {
     if (onChange) {
       onChange(innerValue)
