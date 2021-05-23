@@ -1,6 +1,7 @@
-import produce from 'immer'
-import { QueryClient, UseMutationOptions } from 'react-query'
 import { api } from 'utils/constants'
+import { dispatchToToaster, ToastType } from 'components/Toaster'
+import { QueryClient, UseMutationOptions } from 'react-query'
+import produce from 'immer'
 
 export type Grocery = {
   id: string
@@ -94,7 +95,9 @@ export const getFavoriteOptimisticOptions: (
   },
   onError: (err, { id }, previousGrocery) => {
     // eslint-disable-next-line no-console
-    console.error('Failed to set favorite: ', id, err)
+    console.error('Failed setting favorite: ', id, err)
+    dispatchToToaster('Failed setting favorite', ToastType.warning)
+
     if (previousGrocery) {
       const groceryList = queryClient.getQueryData<Grocery[]>('groceryList')
       const groceryIndex = groceryList?.findIndex((g) => id === g.id)

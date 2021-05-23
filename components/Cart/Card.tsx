@@ -1,4 +1,5 @@
 import { cartAtom, CartItem } from 'models/Cart'
+import { dispatchToToaster, ToastType } from 'components/Toaster'
 import { tw } from 'twind'
 import { useAtom } from 'jotai'
 import InputNumber from 'components/InputNumber'
@@ -14,6 +15,7 @@ export default function CartCard({ cartItem }: CartCardProps) {
   const handleChange = (count: number) => {
     if (!count) {
       setCartItems((items) => items.filter(({ id }) => id !== cartItem.id))
+      dispatchToToaster(`${cartItem.productName} removed`, ToastType.info)
     } else {
       setCartItems((items) =>
         produce(items, (draft) => {

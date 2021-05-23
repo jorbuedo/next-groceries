@@ -1,5 +1,6 @@
 import { buttonGradient } from 'styles'
 import { cartAtom, groceryToCartItem } from 'models/Cart'
+import { dispatchToToaster, ToastType } from 'components/Toaster'
 import { Grocery } from 'models/Grocery'
 import { lineClamp } from '@twind/line-clamp'
 import { tw } from 'twind'
@@ -15,6 +16,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
   const handleAddToCart = () => {
     if (!cartItems.find(({ id }) => id === grocery.id)) {
       setCartItems([groceryToCartItem(grocery), ...cartItems])
+      dispatchToToaster(`${grocery.productName} added`, ToastType.success)
     }
   }
 

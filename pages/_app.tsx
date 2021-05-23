@@ -23,7 +23,7 @@ function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <Header />
         <Component {...pageProps} />
-        <aside className={tw`fixed right-4 bottom-4`}>
+        <aside className={tw`fixed right-4 bottom-16 w-72 z-10`}>
           <Toaster />
         </aside>
         <ReactQueryDevtools initialIsOpen={false} />
