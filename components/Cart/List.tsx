@@ -8,7 +8,7 @@ type CartListProps = {
 
 export default function CartList({ cartItemList }: CartListProps) {
   return (
-    <div className={tw`grid grid-flow-row gap-4`}>
+    <div className={tw`grid grid-flow-row gap-4`} suppressHydrationWarning>
       {cartItemList.map((cartItem) => (
         <CartCard key={cartItem.id} cartItem={cartItem} />
       ))}

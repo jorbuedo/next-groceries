@@ -1,5 +1,6 @@
 import Cart from 'components/Cart'
 import Heart from 'components/Favorite/Heart'
+import Orders from 'components/Orders'
 import { NavLinkProps } from './NavLink'
 
 export default [
@@ -9,6 +10,14 @@ export default [
     href: '/favorites',
     icon: Heart,
     label: 'Favorites',
+    selected: false,
+  },
+  {
+    anchorClass: '',
+    ariaLabel: 'Go to orders',
+    href: '/orders',
+    icon: Orders.Icon,
+    label: 'Orders',
     selected: false,
   },
   {

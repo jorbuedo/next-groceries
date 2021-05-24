@@ -9000,5 +9000,45 @@
       "productDescription": "Dolore quia et aliquid aut quia suscipit optio molestiae. Dolor magnam minima eos. Eos laborum sit dolores.",
       "favorite": false
     }
+  ],
+  "order": [
+    {
+      "createdAt": 1621896469008,
+      "items": [
+        {
+          "quantity": 5,
+          "id": "ab284424-8e46-4a3e-8e13-e179b0ab8bb5",
+          "productName": "Awesome Cotton Soap",
+          "price": 66
+        }
+      ],
+      "totalPrice": 330,
+      "id": 1
+    },
+    {
+      "createdAt": 1621899715182,
+      "items": [
+        {
+          "quantity": 1,
+          "id": "c34287bf-9cb7-40a7-ad07-6534e45a6868",
+          "productName": "Gorgeous Frozen Chair",
+          "price": 47
+        },
+        {
+          "quantity": 1,
+          "id": "ab284424-8e46-4a3e-8e13-e179b0ab8bb5",
+          "productName": "Awesome Cotton Soap",
+          "price": 66
+        },
+        {
+          "quantity": 1,
+          "id": "20cc33f1-223b-4cf0-878d-fdedb3f60b56",
+          "productName": "Handcrafted Metal Towels",
+          "price": 98
+        }
+      ],
+      "totalPrice": 211,
+      "id": 2
+    }
   ]
 }

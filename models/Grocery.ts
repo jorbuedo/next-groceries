@@ -13,7 +13,7 @@ export type Grocery = {
   favorite: boolean
 }
 
-export const getGroceries = async () => {
+export const getGroceries = async (): Promise<Grocery[]> => {
   const res = await fetch(`${api}/grocery`)
   if (!res.ok) {
     throw new Error('Network response was not ok')
@@ -26,7 +26,7 @@ export const getGrocery = async ({
   queryKey,
 }: {
   queryKey: [string, { id: Grocery['id'] }]
-}) => {
+}): Promise<Grocery> => {
   const [, { id }] = queryKey
   const res = await fetch(`${api}/grocery/${id}`)
   if (!res.ok) {
@@ -35,7 +35,7 @@ export const getGrocery = async ({
   return res.json()
 }
 
-export const getFavoriteGroceries = async () => {
+export const getFavoriteGroceries = async (): Promise<Grocery[]> => {
   const res = await fetch(`${api}/grocery?favorite=true`)
   if (!res.ok) {
     throw new Error('Network response was not ok')
@@ -95,7 +95,7 @@ export const getFavoriteOptimisticOptions: (
   },
   onError: (err, { id }, previousGrocery) => {
     // eslint-disable-next-line no-console
-    console.error('Failed setting favorite: ', id, err)
+    console.warn('Failed setting favorite: ', id, err)
     dispatchToToaster('Failed setting favorite', ToastType.warning)
 
     if (previousGrocery) {
