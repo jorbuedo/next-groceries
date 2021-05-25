@@ -25,7 +25,7 @@ export default function Favorite({ isFavorite, id }: FavoriteProps) {
 
   return (
     <button
-      className={tw`p-2 rounded outline-none focus-visible:ring-2 hover:animate-pulse ${
+      className={tw`p-2 rounded focus:outline-none outline-none focus-visible:ring-2 hover:animate-pulse ${
         isFavorite ? 'text-red-600' : 'text-white'
       } ${status === 'loading' && 'animate-ping'}`}
       type="button"

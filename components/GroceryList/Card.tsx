@@ -53,7 +53,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
           <p className={tw`mt-auto`}>{`${grocery.stock} left`}</p>
           <button
             type="button"
-            className={tw`${buttonGradient} px-3 py-1 rounded text-gray-50 shadow font-semibold focus-visible:ring-4`}
+            className={tw`${buttonGradient} px-3 py-1 rounded text-gray-50 shadow font-semibold outline-none focus:outline-none focus-visible:ring-2`}
             onClick={handleAddToCart}
           >
             + Add
