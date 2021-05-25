@@ -46,7 +46,10 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
             className={tw`font-semibold whitespace-nowrap ml-4 text-blue-500`}
           >{`${grocery.price} €`}</p>
         </div>
-        <p className={tw`text-sm ${lineClamp(3)}`}>
+        <p
+          className={tw`text-sm ${lineClamp(3)}`}
+          title={grocery.productDescription}
+        >
           {grocery.productDescription}
         </p>
         <div className={tw`flex justify-between mt-auto pt-2 text-sm`}>
