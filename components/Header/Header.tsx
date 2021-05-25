@@ -19,17 +19,21 @@ export default function Header() {
         className={tw`${headerHeight} bg-white border-b flex fixed top-0 w-full z-20`}
       >
         <Link href="/">
-          <img
-            className={tw`cursor-pointer h-full p-1 ${
-              isFetching && 'animate-pulse'
-            }`}
-            src="/android-chrome-192x192.png"
-            alt="Logo: Basket with fruits"
-          />
+          <div
+            className={tw`pr-4 cursor-pointer flex items-center font-bold text-lg`}
+          >
+            <>
+              <img
+                className={tw`w-12 p-1 ${isFetching && 'animate-pulse'}`}
+                src="/android-chrome-192x192.png"
+                alt="Logo: Basket with fruits"
+              />
+              {pathname !== '/' && <span className={tw`pl-4`}>⬅</span>}
+            </>
+          </div>
         </Link>
-        <h1
-          className={tw`flex items-center font-bold sm:text-lg mx-4 sm:mx-12 truncate`}
-        >
+
+        <h1 className={tw`flex items-center font-bold sm:text-lg truncate`}>
           {h1Text}
         </h1>
         <nav className={tw`flex items-center ml-auto`}>

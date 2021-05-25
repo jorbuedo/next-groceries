@@ -9,6 +9,7 @@ import { useQuery, useQueryClient } from 'react-query'
 import Cart from 'components/Cart'
 import GroceryList from 'components/GroceryList'
 import Head from 'next/head'
+import Panel from 'components/Panel'
 
 export default function FavoritesPage() {
   const queryClient = useQueryClient()
@@ -44,11 +45,9 @@ export default function FavoritesPage() {
           )}
         </div>
 
-        <div className={tw`bg-white hidden md:block w-full max-w-sm relative`}>
-          <div className={tw`${mainHeight} fixed w-full max-w-sm p-4`}>
-            <Cart.Template />
-          </div>
-        </div>
+        <Panel>
+          <Cart.Template />
+        </Panel>
       </main>
     </>
   )
