@@ -5,8 +5,10 @@ import { tw } from 'twind'
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
+import Cart from 'components/Cart'
 import Head from 'next/head'
 import Orders from 'components/Orders'
+import Panel from 'components/Panel'
 
 export default function OrdersPage() {
   const { isLoading, data: orderList } = useQuery('orderList', getOrders)
@@ -31,6 +33,10 @@ export default function OrdersPage() {
             <Orders.List orderList={orderList} />
           )}
         </div>
+
+        <Panel>
+          <Cart.Template />
+        </Panel>
       </main>
     </>
   )

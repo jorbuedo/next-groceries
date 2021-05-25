@@ -3,9 +3,11 @@ import { headerHeight } from 'styles'
 import { tw } from 'twind'
 import { useIsFetching } from 'react-query'
 import { useRouter } from 'next/router'
+import Cart from 'components/Cart'
 import Link from 'next/link'
 import NavLink from './NavLink'
 import navLinks from './navLinks'
+import TogglePanel from './TogglePanel'
 
 export const h1Atom = atom('')
 
@@ -37,13 +39,16 @@ export default function Header() {
           {h1Text}
         </h1>
         <nav className={tw`flex items-center ml-auto`}>
-          {navLinks.map((navLink) => (
-            <NavLink
-              key={navLink.href}
-              {...navLink}
-              selected={pathname === navLink.href}
-            />
-          ))}
+          <>
+            {navLinks.map((navLink) => (
+              <NavLink
+                key={navLink.href}
+                {...navLink}
+                selected={pathname === navLink.href}
+              />
+            ))}
+            <TogglePanel icon={Cart.Icon} label="Cart" />
+          </>
         </nav>
       </header>
       <div className={tw`${headerHeight}`} />

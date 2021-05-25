@@ -14,6 +14,10 @@ type GroceryListCardProps = {
 export default function GroceryListCard({ grocery }: GroceryListCardProps) {
   const [cartItems, setCartItems] = useAtom(cartAtom)
   const handleAddToCart = () => {
+    if (!grocery.stock) {
+      dispatchToToaster('Out of stock :(', ToastType.warning)
+      return
+    }
     if (!cartItems.find(({ id }) => id === grocery.id)) {
       setCartItems([groceryToCartItem(grocery), ...cartItems])
       dispatchToToaster(`${grocery.productName} added`, ToastType.success)
@@ -45,7 +49,7 @@ export default function GroceryListCard({ grocery }: GroceryListCardProps) {
         <p className={tw`text-sm ${lineClamp(3)}`}>
           {grocery.productDescription}
         </p>
-        <div className={tw`flex justify-between mt-auto pt-1 text-sm`}>
+        <div className={tw`flex justify-between mt-auto pt-2 text-sm`}>
           <p className={tw`mt-auto`}>{`${grocery.stock} left`}</p>
           <button
             type="button"

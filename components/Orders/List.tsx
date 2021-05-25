@@ -8,7 +8,7 @@ export default function OrdersList({ orderList }: { orderList?: Order[] }) {
   }
   return (
     <div
-      className={tw`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4`}
+      className={tw`grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4`}
     >
       {orderList.map((order) => (
         <OrderCard key={order.id} order={order} />

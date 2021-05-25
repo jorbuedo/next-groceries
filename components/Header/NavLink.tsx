@@ -1,7 +1,7 @@
 import { apply, tw } from 'twind'
 import Link from 'next/link'
 
-const linkStyle = apply`cursor-pointer flex items-center md:px-4 text-gray-900 hover:(bg-yellow-500 text-white)`
+export const linkStyle = apply`cursor-pointer flex items-center md:px-4 text-gray-900 hover:(bg-yellow-500 text-white) outline-none focus-visible:ring-2`
 
 export type NavLinkProps = {
   anchorClass: string
