@@ -7,7 +7,7 @@
       "productName": "Unbranded Metal Chair",
       "price": 43,
       "productDescription": "Porro tempore autem. Sunt molestias qui quod recusandae nemo quia optio. Nostrum aperiam officiis aut reprehenderit illo.",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "20cc33f1-223b-4cf0-878d-fdedb3f60b56",
@@ -34,7 +34,7 @@
       "productName": "Gorgeous Frozen Chair",
       "price": 47,
       "productDescription": "Harum modi sunt. Voluptatem ut molestiae consequatur. Ea omnis architecto laboriosam accusantium reiciendis corporis exercitationem ad dolor. Fugit autem placeat voluptas sint aut aliquam sed. Totam fuga nesciunt rerum voluptatibus. Voluptatibus voluptates vel ut et temporibus perferendis laboriosam accusamus.",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "41fb4f07-22fd-4ef6-b23c-1ac022b57d11",
@@ -70,7 +70,7 @@
       "productName": "Rustic Soft Table",
       "price": 49,
       "productDescription": "Exercitationem iure quia officiis sed hic illo iusto vero maxime. Fuga iste quia nemo. Officiis nihil veritatis doloremque in praesentium sit autem fugit.",
-      "favorite": true
+      "favorite": false
     },
     {
       "id": "57483e83-1378-42f3-8d40-e4d75e4ff767",
@@ -97,7 +97,7 @@
       "productName": "Awesome Plastic Towels",
       "price": 93,
       "productDescription": "Earum voluptates animi excepturi sed dolor nemo. Ab sed magnam modi saepe et est optio dolorum. Eum pariatur dolor voluptatibus. Ut magnam omnis. Culpa nisi provident cumque libero.",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "ea46848e-f2fe-4d8f-a0b2-c30c0f1d2417",
@@ -115,7 +115,7 @@
       "productName": "Handcrafted Granite Pants",
       "price": 4,
       "productDescription": "Impedit nihil dolorem. Illum reprehenderit sit. Doloribus quo reprehenderit beatae est vero. Expedita ut praesentium. Incidunt quisquam a dolore a animi. Voluptas molestiae aut fuga.",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "9dbcefef-804d-483d-8e1c-28941866a85c",
@@ -205,7 +205,7 @@
       "productName": "Fantastic Granite Chips",
       "price": 42,
       "productDescription": "Quia et cum est maxime aperiam molestiae. Qui rerum eligendi ut assumenda dolorem eius aut. Fugiat quia laudantium sed earum est expedita qui. Tempore cumque et molestias omnis sequi sed. Vel amet quo.",
-      "favorite": false
+      "favorite": true
     },
     {
       "id": "d5a88de7-4e07-413f-a834-3e01e5c95dc1",

@@ -4,15 +4,17 @@ import { mainHeight } from 'styles'
 import { tw } from 'twind'
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 import Cart from 'components/Cart'
 import GroceryList from 'components/GroceryList'
 import Head from 'next/head'
 import Panel from 'components/Panel'
 
 export default function GroceryListPage() {
-  const { isLoading } = useQuery('groceryList', getGroceries, {
+  const { isLoading } = useInfiniteQuery('groceryList', getGroceries, {
     staleTime: 30000,
+    keepPreviousData: true,
+    refetchOnMount: false,
   })
   const [, setH1] = useAtom(h1Atom)
   useEffect(() => {

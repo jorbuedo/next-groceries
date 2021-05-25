@@ -1,6 +1,6 @@
 import { api } from 'utils/constants'
 import { dispatchToToaster, ToastType } from 'components/Toaster'
-import { QueryClient, UseMutationOptions } from 'react-query'
+import { InfiniteData, QueryClient, UseMutationOptions } from 'react-query'
 import produce from 'immer'
 
 export type Grocery = {
@@ -13,8 +13,8 @@ export type Grocery = {
   favorite: boolean
 }
 
-export const getGroceries = async (): Promise<Grocery[]> => {
-  const res = await fetch(`${api}/grocery`)
+export const getGroceries = async ({ pageParam = 0 }): Promise<Grocery[]> => {
+  const res = await fetch(`${api}/grocery?_page=${pageParam}&_limit=24`)
   if (!res.ok) {
     throw new Error('Network response was not ok')
   }
@@ -72,26 +72,34 @@ export const getFavoriteOptimisticOptions: (
 ) => ({
   onMutate: async ({ isFavorite, id }) => {
     await queryClient.cancelQueries('groceryList')
-    const groceryList = queryClient.getQueryData<Grocery[]>('groceryList')
+    const groceryList =
+      queryClient.getQueryData<InfiniteData<Grocery[]>>('groceryList')
 
     if (groceryList === undefined) {
       return undefined
     }
 
-    const groceryIndex = groceryList?.findIndex((g) => id === g.id)
-
-    if (groceryIndex === undefined || groceryIndex === -1) {
-      return undefined
-    }
-    queryClient.setQueryData<Grocery[]>(
-      'groceryList',
-      produce(groceryList, (draft) => {
-        // eslint-disable-next-line no-param-reassign
-        draft[groceryIndex].favorite = isFavorite
+    let groceryPageIndex = 0
+    const groceryPage = groceryList?.pages.findIndex((page) =>
+      page.findIndex((g, i) => {
+        groceryPageIndex = i
+        return id === g.id
       }),
     )
 
-    return groceryList[groceryIndex]
+    if (groceryPage === undefined || groceryPage === -1) {
+      return undefined
+    }
+
+    queryClient.setQueryData<InfiniteData<Grocery[]>>(
+      'groceryList',
+      produce(groceryList, (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.pages[groceryPage][groceryPageIndex].favorite = isFavorite
+      }),
+    )
+
+    return groceryList.pages[groceryPage][groceryPageIndex]
   },
   onError: (err, { id }, previousGrocery) => {
     // eslint-disable-next-line no-console
@@ -99,19 +107,26 @@ export const getFavoriteOptimisticOptions: (
     dispatchToToaster('Failed setting favorite', ToastType.warning)
 
     if (previousGrocery) {
-      const groceryList = queryClient.getQueryData<Grocery[]>('groceryList')
-      const groceryIndex = groceryList?.findIndex((g) => id === g.id)
-
+      const groceryList =
+        queryClient.getQueryData<InfiniteData<Grocery[]>>('groceryList')
+      let groceryPageIndex = 0
+      const groceryPage = groceryList?.pages.findIndex((page) =>
+        page.findIndex((g, i) => {
+          groceryPageIndex = i
+          return id === g.id
+        }),
+      )
       if (
         groceryList !== undefined &&
-        groceryIndex !== undefined &&
-        groceryIndex >= 0
+        groceryPage !== undefined &&
+        groceryPage >= 0
       ) {
-        queryClient.setQueryData<Grocery[]>(
+        queryClient.setQueryData<InfiniteData<Grocery[]>>(
           'groceryList',
           produce(groceryList, (draft) => {
             // eslint-disable-next-line no-param-reassign
-            draft[groceryIndex].favorite = previousGrocery.favorite
+            draft.pages[groceryPage][groceryPageIndex].favorite =
+              previousGrocery.favorite
           }),
         )
       }

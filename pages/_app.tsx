@@ -2,10 +2,10 @@ import { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { tw } from 'twind'
-import { useScroll } from 'utils/scroll'
 import Favicon from 'components/Favicon'
 import Head from 'next/head'
 import Header from 'components/Header'
+import ScrollWatcher from 'components/ScrollWatcher'
 import Toaster from 'components/Toaster'
 
 if (process.env.NODE_ENV === 'development') {
@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 function App({ Component, pageProps }: AppProps) {
-  useScroll()
   const queryClient = new QueryClient()
   return (
     <>
@@ -27,6 +26,7 @@ function App({ Component, pageProps }: AppProps) {
           <Toaster />
         </aside>
         <ReactQueryDevtools initialIsOpen={false} />
+        <ScrollWatcher />
       </QueryClientProvider>
     </>
   )
