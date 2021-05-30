@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Header from 'components/Header'
 import ScrollWatcher from 'components/ScrollWatcher'
 import Toaster from 'components/Toaster'
+import withTwindApp from '@twind/next/app'
 
 if (process.env.NODE_ENV === 'development') {
   import('twind/shim')
@@ -32,4 +33,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default App
+export default withTwindApp(App)

@@ -1,6 +1,7 @@
 import { panelAtom } from 'components/Panel/Panel'
 import { useAtom } from 'jotai'
 import { tw } from 'twind'
+import { useIsClient } from 'utils/client'
 import { linkStyle } from './NavLink'
 
 export type TogglePanelProps = {
@@ -10,9 +11,12 @@ export type TogglePanelProps = {
 
 export default function TogglePanel({ label, icon: Icon }: TogglePanelProps) {
   const [isOpen, setIsOpen] = useAtom(panelAtom)
+  const { key } = useIsClient()
 
   return (
     <button
+      key={key}
+      suppressHydrationWarning
       type="button"
       className={tw`${linkStyle} hidden md:flex focus:outline-none ${
         isOpen && 'bg-blue-200'

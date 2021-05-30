@@ -699,6 +699,11 @@
   resolved "https://registry.yarnpkg.com/@twind/line-clamp/-/line-clamp-0.1.1.tgz#34c82fbb89864a24bc3f603b47d6b5ad48a669ed"
   integrity sha512-OAbGo1traJ5KmTSlIGPAAg8RnQx3XCGriKyPJA2L6yuO0bO1DwDm6oIAAYuLuV792NDyfWeZNcwKUfBXWSnDVQ==
 
+"@twind/next@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@twind/next/-/next-1.0.7.tgz#d3900261bd0fe0ad102ddec2ca2d9b8e2d6c08e4"
+  integrity sha512-hEVsZJK0t1FH44TH0Al7GLXXaEW8H35DgCIu69ndI5ltAFOTyZ8ioqBbx+EiedU9cBQ66iA5QdahxuFdj6XoXA==
+
 "@types/aria-query@^4.2.0":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.1.tgz#78b5433344e2f92e8b306c06a5622c50c245bf6b"
