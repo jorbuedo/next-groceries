@@ -1,6 +1,9 @@
+import { tw } from 'twind'
+
 export default function Heart() {
   return (
     <svg
+      className={tw`w-8`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
